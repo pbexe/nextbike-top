@@ -121,3 +121,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 GEOS_LIBRARY_PATH = 'C:/Program Files/GDAL/geos_c.dll'
+
+# Nextbike API config
+
+API_ROOT = "https://api.nextbike.net/maps/nextbike-live.json"

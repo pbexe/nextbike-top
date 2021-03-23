@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 from top.models import Bike, Bike_position, Location
+import requests
 
 class Command(BaseCommand):
     help = 'Pulls new data from nextbike'

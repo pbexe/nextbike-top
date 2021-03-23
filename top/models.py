@@ -23,3 +23,6 @@ class Bike_position(models.Model):
     lat = models.FloatField(default=0.0)
     long = models.FloatField(default=0.0)
 
+    def __str__(self):
+        return self.bike.name + " at " + str(self.lat) + " " + str(self.long)
+

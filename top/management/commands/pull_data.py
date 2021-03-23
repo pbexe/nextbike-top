@@ -13,13 +13,12 @@ class Command(BaseCommand):
         if not Bike.objects.filter(number=bike_json["bike_numbers"][0]).exists():
             bike = Bike(number=bike_json["bike_numbers"][0], name=bike_json["name"], ebike=bool(bike_json["bike_list"][0]["battery_pack"]))
             bike.save()
+
         bike = Bike.objects.get(number=bike_json["bike_numbers"][0])
         pos = Bike_position(bike=bike, lat=float(bike_json["lat"]), long=float(bike_json["lng"]))
         pos.save()
 
-
     def handle(self, *args, **options):
-
         try:
             city=Location(area_id=476, name='Cardiff')
             city.save()
@@ -32,14 +31,8 @@ class Command(BaseCommand):
             "city": city.area_id
         }).json()["countries"][0]["cities"][0]["places"]
 
-        self.stdout.write(self.style.SUCCESS('Successfully run the pull command'))
-
         for bike in data:
             if bike["bike"] == True:
-
                 self.save_bike_info(bike)
 
-                # self.stdout.write(self.style.NOTICE(bike["name"]))
-                # pprint(bike)
-                
-        self.stdout.write(self.style.WARNING('This has not actually been built yet'))
+        self.stdout.write(self.style.WARNING('This command is still in development'))

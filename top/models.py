@@ -22,7 +22,8 @@ class Bike_position(models.Model):
     bike = models.ForeignKey(Bike, on_delete=models.CASCADE)
     lat = models.FloatField(default=0.0)
     long = models.FloatField(default=0.0)
+    time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.bike.name + " at " + str(self.lat) + " " + str(self.long)
+        return self.bike.name + " at " + str(self.lat) + " " + str(self.long) + str(self.time)
 
